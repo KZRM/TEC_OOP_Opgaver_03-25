@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AnimalSounds\Sounds\cat.wav" />
+    <None Remove="AnimalSounds\Sounds\dog.wav" />
+    <None Remove="AnimalSounds\Sounds\sheep.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AnimalSounds\Sounds\cat.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimalSounds\Sounds\dog.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimalSounds\Sounds\sheep.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Windows.Extensions" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>
