@@ -1,13 +1,15 @@
-﻿namespace TEC_OOP_Opgaver.Bank
+﻿using static TEC_OOP_Opgaver.Tools.ConsoleHelper;
+
+namespace TEC_OOP_Opgaver.OOP_Dag2.Bank
 {
-    internal class Bank
+    internal class BasicBank
     {
-        public Bank()
+        public BasicBank()
         {
 
             BankAccount account = new BankAccount(
                 new AccountHolder("Peter", "Petersen", 123456),
-                new AccountAdministrator("Lisa", "Lisasen", 654321),
+                new AccountAdministrator("Lisa", "Madsen", 654321),
                 1000);
 
             account.Deposit(400);
@@ -18,6 +20,8 @@
             account.Deposit(-50);
 
             account.ShowBalance();
+
+            Console.ReadKey();
         }
 
         /// PRIVAT konto
@@ -44,12 +48,9 @@
                 if (amount > 0)
                 {
                     _balance += amount;
-                    HappyLog($"Deposited {amount}. Now you have {_balance}");
+                    PrintCol($"Deposited {amount}. Now you have {_balance}", ConsoleColor.Green);
                 }
-                else
-                {
-                    ErrorLog("Deposit amount cant be less than zero");
-                }
+                else { PrintCol("Deposit amount cant be less than zero", ConsoleColor.Red); }
             }
 
             public void Withdraw(decimal amount)
@@ -57,12 +58,9 @@
                 if (amount > 0 && amount <= _balance)
                 {
                     _balance -= amount;
-                    HappyLog($"Withdrew {amount}. Now you have {_balance}");
+                    PrintCol($"Withdrew {amount}. Now you have {_balance}", ConsoleColor.Green);
                 }
-                else
-                {
-                    ErrorLog("Withdraw amount cant be less than zero, or over account balance");
-                }
+                else  { PrintCol("Withdraw amount cant be less than zero, or over account balance", ConsoleColor.Red);}
             }
 
             public void ShowBalance()
@@ -78,17 +76,17 @@
             private int _id;
             public virtual string FirstName { get; set; }
             public virtual string LastName { get; set; }
-            public virtual string FullName => FirstName + " " + LastName;       ///
+            public virtual string FullName => FirstName + " " + LastName;       
 
             public int ID => _id;
 
             public Person(string first, string last, int id)
             {
-                if (id.ToString().Length != 6) // Tjekker længden
+                // Sørger for længden er 6!
+                if (id.ToString().Length != 6) 
                     throw new ArgumentException("ID must be 6 digits");
-                _id = id;
-                FirstName = first;
-                LastName = last;
+                
+                _id = id; FirstName = first; LastName = last;
             }
         }
 
@@ -97,19 +95,5 @@
 
         // Konto-administrator
         private class AccountAdministrator(string firstName, string lastName, int id) : Person(firstName, lastName, id) { }
-
-        public static void ErrorLog(string text)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(text);
-            Console.ResetColor();
-        }
-
-        public static void HappyLog(string text)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(text);
-            Console.ResetColor();
-        }
     }
 }

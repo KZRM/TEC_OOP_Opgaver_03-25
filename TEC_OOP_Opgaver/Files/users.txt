@@ -1,0 +1,3 @@
+﻿Peter,Petersen,47,mail@mailll.com
+Kalle,Rathje,28,private@mail.gdpr
+Niels,Olesen,1000,niels@olesen.com

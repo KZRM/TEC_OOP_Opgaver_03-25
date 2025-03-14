@@ -8,24 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AnimalSounds\Sounds\cat.wav" />
-    <None Remove="AnimalSounds\Sounds\dog.wav" />
-    <None Remove="AnimalSounds\Sounds\sheep.wav" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="AnimalSounds\Sounds\cat.wav">
+    <Content Include="Files\Sounds\cat.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AnimalSounds\Sounds\dog.wav">
+    <Content Include="Files\Sounds\dog.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AnimalSounds\Sounds\sheep.wav">
+    <Content Include="Files\Sounds\sheep.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
     <PackageReference Include="System.Windows.Extensions" Version="9.0.2" />
   </ItemGroup>
 
